@@ -1,0 +1,25 @@
+{
+  "name": "javascript-map",
+  "version": "1.0.0",
+  "description": "map about sell flats",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flausdr/javascript-map.git"
+  },
+  "keywords": [
+    "javascript",
+    "html",
+    "css",
+    "map"
+  ],
+  "author": "mrychkov1302@gmail.com <Rychkov Maksym>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flausdr/javascript-map/issues"
+  },
+  "homepage": "https://github.com/flausdr/javascript-map#readme"
+}
