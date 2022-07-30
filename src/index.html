@@ -2,13 +2,44 @@
 <html>
 
 <head>
+    <title>Marker Clustering</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="./style/style.css" />
-    <title>Map</title>
 </head>
 
 <body>
-    <div id="map"></div>
+    <div class="wrapper">
+        <div id="map"></div>
+        <div class="info-window"></div>
+        <button class="filter-btn">Відкрити фільтри</button>
+        <div class="filter hide">
+
+            <h2 class="filter__title">Виберіть потрібні дані:</h2>
+
+            <div class="filter__block price">
+                <label class="filter__label label-price">Укажіть ціну:</label>
+                <input type="range" class="filter__price input-price" min="17000" max="63000" step="100">
+                <span class="filter__value min-price">17000$</span>
+                <span class="filter__value max-price">63000$</span>
+            </div>
+
+            <div class="filter__block rooms">
+                <label class="filter__label label-rooms">Кількість кімнат:</label>
+
+                <input type="radio" id="rooms2" name="value-rooms" value="2" class="filter-il">
+                <label for="rooms2" class="filter__blabel label-two">2</label>
+
+                <input type="radio" id="rooms3" name="value-rooms" value="3" class="filter-il">
+                <label for="rooms3" class="filter__blabel label-three">3</label>
+
+                <input type="radio" id="rooms4" name="value-rooms" value="4" class="filter-il">
+                <label for="rooms4" class="filter__blabel label-four">4</label>
+            </div>
+
+            <button class="btn-post">Оновити</button>
+        </div>
+
+    </div>
 
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
     <script src="./js/app.js"></script>
