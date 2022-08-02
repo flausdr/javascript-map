@@ -1,0 +1,13 @@
+@import "../../node_modules/leaflet/dist/leaflet.css";
+@import "../../node_modules/modern-normalize/modern-normalize.css";
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;800&display=swap');
+
+.block-map {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 100vh;
+}
