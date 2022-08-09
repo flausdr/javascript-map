@@ -11,7 +11,6 @@ export default class InitMap {
     }
 
     initMarkers(arrayFlats) {
-        console.log(arrayFlats + '   ' + 'test')
         arrayFlats.forEach(flat => {
             const myIcon = L.icon({
                 iconUrl: markerDot,
