@@ -375,3 +375,60 @@ $sail-blue: #326789;
         }
     }
 }
+
+.my-div-icon {
+    color: transparent;
+    background-image: url('../../resources/image/marker.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    min-height: 23px;
+    min-width: 23px;
+    &.hide {
+        display: none;
+    }
+}
+
+.hide {
+    display: block;
+    height: 21px;
+    width: 17px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.item {
+    z-index: 9999999;
+    display: flex;
+    text-align: center;
+    flex-wrap: no-wrap;
+    width: 500px;
+    height: 150px;
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    background-color: $green;
+    border: 1px solid $green;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    &__text {
+        height: 100%;
+        margin-left: 10px;
+        flex-basis: 80%;
+        padding-top: 15px;
+    }
+    &__close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+    }
+    &__photo {
+        position: relative;
+        display: block;
+        height: 95%;
+        margin-top: 5px;
+        width: 150px;
+        box-sizing: content-box;
+    }
+}
