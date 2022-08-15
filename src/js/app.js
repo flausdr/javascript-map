@@ -20,8 +20,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     info.createSelectStreet(flats.flats)
     info.openCloseModalStreet()
     info.openCloseModalRooms()
-
     info.renderPriceValue(flats.flats)
+    
+    info.inputValue()
+    info.inputRangeValue()
 
     document.querySelector('.wrapper').addEventListener('click', (e) => {
         const content = new Content()

@@ -6,9 +6,10 @@ export default class AddInfo {
         this.price = document.querySelector('.price')
         this.valuesPrice = document.querySelector('.price-values') 
         this.range = document.querySelector('.price-slider .price-slider__progress')
+        this.priceGap = 5000
     }
 
-    minMaxPrice(json, action) {  // method find min and max price
+    minMaxPrice(json, action) {
         const arr = []
         json.map(flat => arr.push(flat.price))
         if (action === 'min') {
@@ -21,7 +22,7 @@ export default class AddInfo {
         }
     }
 
-    renderPriceValue(json) {  // inputs add attributes
+    renderPriceValue(json) {
         this.priceInput[0].value = this.minMaxPrice(json, 'min')
         this.priceInput[1].value = this.minMaxPrice(json, 'max')
 
@@ -31,6 +32,50 @@ export default class AddInfo {
         this.rangeInput[1].max = this.minMaxPrice(json, 'max')
         this.rangeInput[0].value = this.minMaxPrice(json, 'min')
         this.rangeInput[1].value = this.minMaxPrice(json, 'max')
+    }
+
+    inputValue() {
+        const fixedMin = this.priceInput[0].value
+        this.priceInput.forEach(input => {
+            input.addEventListener('input', e => {
+                this.minPrice = parseInt(this.priceInput[0].value)
+                this.maxPrice = parseInt(this.priceInput[1].value)
+                if ((this.maxPrice - this.minPrice >= this.priceGap) && this.maxPrice <= this.rangeInput[1].max) {
+                    if (e.target.classList.contains('price-min')) {
+                        this.rangeInput[0].value = this.minPrice
+                        this.range.style.left = (((this.minPrice - fixedMin) / (this.rangeInput[0].max - fixedMin)) * 100) + '%'
+                        console.log(this.range.style.left)
+                    } else {
+                        this.rangeInput[1].value = this.maxPrice
+                        this.range.style.right = 100 - ((this.maxPrice - fixedMin) / (this.rangeInput[1].max - fixedMin)) * 100 + '%'
+                    }
+                }
+            })
+        })
+    }
+
+    inputRangeValue() {
+        const fixedMin = this.priceInput[0].value
+        this.rangeInput.forEach(input => {
+            input.addEventListener('input', e => {
+                this.minPrice = parseInt(this.rangeInput[0].value)
+                this.maxPrice = parseInt(this.rangeInput[1].value)
+
+                if (this.maxPrice - this.minPrice < this.priceGap) {
+                    if (e.target.classList.contains('range-min')) {
+                        this.rangeInput[0].value = this.maxPrice - this.priceGap
+                    } else {
+                        this.rangeInput[1].value = this.minPrice + this.priceGap
+                    }
+                } else {
+                    this.priceInput[0].value = this.minPrice
+                    this.range.style.left = (((this.minPrice - fixedMin) / (this.rangeInput[0].max - fixedMin)) * 100) + '%'
+                    this.priceInput[1].value = this.maxPrice
+                    this.range.style.right = 100 - ((this.maxPrice - fixedMin) / (this.rangeInput[1].max - fixedMin)) * 100 + '%'
+                    console.log(this.range.style.left)
+                }
+            })
+        })
     }
 
     createSelectStreet(json) {
