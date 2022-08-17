@@ -6,7 +6,7 @@ export default class Cards {
         this.cards = document.querySelector('.cards')
     }
 
-    loaded(json) {  // create flats cards
+    loaded(json) {
         const card = `
                 <div class="card" data-street="${json.street}">
                     <div class="card-photo">
@@ -27,9 +27,5 @@ export default class Cards {
                 </div>
                 `
         this.cards.insertAdjacentHTML('beforeend', card)
-    }
-
-    loadedAllCards(json) {
-        json.forEach(item => this.loaded(item))
     }
 }

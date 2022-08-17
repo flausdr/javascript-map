@@ -2,28 +2,21 @@ import '../style/style.scss'
 
 import InitMap from './map/init-map'
 import InitFlats from './map/fetch'
-import Cards from './map/loadCards'
+import Cards from './dynamic-info/loadCards'
 import Content from './map/popupCard'
-import AddInfo from './map/add-info'
-
+import RightBlock from './dynamic-info/right-block'
 
 document.addEventListener('DOMContentLoaded', async () => {
     const map = new InitMap()
     const flats = new InitFlats()
     const cards = new Cards()
-    const info = new AddInfo()
+    const rightBlock = new RightBlock()
 
     await flats.fetchFlats()
     map.initMarkers(flats.flats)
-    cards.loadedAllCards(flats.flats)
 
-    info.createSelectStreet(flats.flats)
-    info.openCloseModalStreet()
-    info.openCloseModalRooms()
-    info.renderPriceValue(flats.flats)
-    
-    info.inputValue()
-    info.inputRangeValue()
+    rightBlock.initSelectsOptions(flats.flats)
+    rightBlock.windowScroll(flats.flats)
 
     document.querySelector('.wrapper').addEventListener('click', (e) => {
         const content = new Content()

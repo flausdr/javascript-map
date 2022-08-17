@@ -1,4 +1,4 @@
-import Apartments from "./flats"
+import Apartments from "./create-object"
 
 export default class Fetch {
 
