@@ -21,6 +21,7 @@ $sail-blue: #326789;
     padding: 0 30px;
     font-family: 'Nunito Sans', sans-serif;
     position: relative;
+    z-index: 2;
 }
 
 .container {
@@ -33,6 +34,7 @@ $sail-blue: #326789;
     display: block;
     min-height: 100px;
     text-align: center;
+
     &__icon {
         display: block;
         max-width: 45px;
@@ -44,6 +46,7 @@ $sail-blue: #326789;
         fill: $green;
         cursor: pointer;
     }
+
     &__text {
         margin: 16px auto;
         padding: 15px 0;
@@ -62,6 +65,7 @@ $sail-blue: #326789;
     margin-right: 30px;
     margin-bottom: 20px;
     position: relative;
+
     &__title {
         display: block;
         text-align: center;
@@ -77,14 +81,17 @@ $sail-blue: #326789;
     position: absolute;
     left: 0;
     right: 0;
+
     &.open {
         overflow-y: scroll;
         box-sizing: content-box;
         scrollbar-width: none;
     }
+
     &__li {
         display: none;
         z-index: 0;
+
         &.active--zero,
         &.open {
             background-color: #fff;
@@ -100,19 +107,22 @@ $sail-blue: #326789;
             color: black;
             font-weight: 600;
             font-size: 18px;
-            z-index: 9999;
+            z-index: 6;
             cursor: pointer;
             transition: 0.2s linear all;
+
             &:hover {
                 background-color: $blue;
                 color: white;
                 transition: 0.2s linear all;
             }
         }
+
         &.active--zero {
             border: none;
         }
     }
+
     &__search {
         display: block;
         border: 1px solid $sail-blue;
@@ -132,6 +142,7 @@ $sail-blue: #326789;
     margin-left: 20px;
     position: relative;
     min-height: 100px;
+
     &__title {
         display: block;
         text-align: center;
@@ -140,7 +151,7 @@ $sail-blue: #326789;
     }
 }
 
-.rooms-filter-options{
+.rooms-filter-options {
     display: block;
     min-height: 50px;
     padding-left: 0;
@@ -148,9 +159,11 @@ $sail-blue: #326789;
     top: 30px;
     left: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 5;
+
     &__value {
         display: none;
+
         &.open {
             position: relative;
             background-color: white;
@@ -164,8 +177,9 @@ $sail-blue: #326789;
             min-height: 40px;
             font-weight: 600;
             font-size: 16px;
-            z-index: 9999;
+            z-index: 4;
             cursor: pointer;
+
             &:hover {
                 background-color: $blue;
                 border: 1px solid $blue;
@@ -201,11 +215,13 @@ $sail-blue: #326789;
     display: flex;
     justify-content: center;
     align-items: center;
+
     &__text {
         margin: 0 15px;
         font-size: 14px;
         font-weight: 400;
     }
+
     &__input {
         width: 70px;
         min-height: 40px;
@@ -215,6 +231,7 @@ $sail-blue: #326789;
         -moz-appearance: textfield;
         font-size: 16px;
         font-weight: 400;
+
         &::-webkit-outer-spin-button,
         ::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -233,6 +250,7 @@ $sail-blue: #326789;
     background: #fff;
     border-radius: 5px;
     overflow: hidden;
+
     &__progress {
         height: 100%;
         left: 0;
@@ -246,6 +264,7 @@ $sail-blue: #326789;
 .price-range {
     position: relative;
     min-height: 5px;
+
     &__input {
         position: absolute;
         width: 100%;
@@ -255,6 +274,7 @@ $sail-blue: #326789;
         pointer-events: none;
         -webkit-appearance: none;
         -moz-appearance: none;
+
         &::-webkit-slider-thumb {
             height: 17px;
             width: 17px;
@@ -264,6 +284,7 @@ $sail-blue: #326789;
             -webkit-appearance: none;
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
         }
+
         &::-moz-range-thumb {
             height: 17px;
             width: 17px;
@@ -284,6 +305,7 @@ $sail-blue: #326789;
     bottom: 0;
     right: 45%;
     min-height: 100vh;
+    z-index: 2;
 }
 
 .block-map {
@@ -303,7 +325,8 @@ $sail-blue: #326789;
     margin-top: 30px;
 }
 
-.card {
+.card,
+.form-card {
     display: flex;
     margin-bottom: 30px;
     min-height: 230px;
@@ -315,7 +338,8 @@ $sail-blue: #326789;
     background-color: $green;
 }
 
-.card-photo {
+.card-photo,
+.form-photo {
     flex-basis: 50%;
 
     img {
@@ -326,14 +350,17 @@ $sail-blue: #326789;
     }
 }
 
-.card-info {
+.card-info,
+.form-info {
     flex-basis: 50%;
     padding: 0 15px;
     position: relative;
+
     &__price {
         font-size: 24px;
         font-weight: 600;
     }
+
     &__city {
         position: absolute;
         top: 7px;
@@ -341,39 +368,74 @@ $sail-blue: #326789;
         font-weight: 600;
         font-size: 20px;
     }
+
     &__street {
         font-weight: 600;
         font-size: 20px;
         cursor: text;
     }
+
     &__rooms {
         font-size: 20px;
         font-weight: 600;
     }
+
     &__date {
         position: absolute;
         bottom: 0;
     }
+
     &__call {
         position: absolute;
         bottom: 15px;
         right: 10%;
         border-radius: 5px;
+        // border: none;
         cursor: pointer;
         background-color: $green;
         border: 1px solid #fff;
         transition: 0.3s linear all;
+
         img {
             margin: 5px;
             width: 20px;
             height: 20px;
         }
+
         &:hover {
             background-color: $blue;
             border-color: $blue;
             transition: 0.3s linear all;
         }
     }
+}
+
+.btn-render,
+.btn-post {
+    display: flex;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    background-color: $green;
+    border: 1px solid $green;
+    border-radius: 5px;
+    color: #fff;
+    height: 40px;
+    position: fixed;
+    top: 15px;
+    right: 46%;
+    z-index: 401;
+    cursor: pointer;
+}
+
+.btn-post {
+    top: 60px;
+}
+
+.loop {
+    width: 20px;
+    height: 20px;
 }
 
 .my-div-icon {
@@ -383,6 +445,7 @@ $sail-blue: #326789;
     background-repeat: no-repeat;
     min-height: 23px;
     min-width: 23px;
+
     &.hide {
         display: none;
     }
@@ -411,18 +474,21 @@ $sail-blue: #326789;
     border-radius: 5px;
     color: #fff;
     padding: 10px 20px;
+
     &__text {
         height: 100%;
         margin-left: 10px;
         flex-basis: 80%;
         padding-top: 15px;
     }
+
     &__close {
         position: absolute;
         top: 5px;
         right: 5px;
         cursor: pointer;
     }
+
     &__photo {
         position: relative;
         display: block;
@@ -430,5 +496,226 @@ $sail-blue: #326789;
         margin-top: 5px;
         width: 150px;
         box-sizing: content-box;
+    }
+}
+
+.modal,
+.send-modal {
+    z-index: 6;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.overflow,
+.send-overflow {
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 6;
+}
+
+.form,
+.send-window {
+    position: relative;
+    background-color: $green;
+    border: 1px solid $green;
+    border-radius: 5px;
+    flex-basis: 50%;
+    max-width: 50%;
+    z-index: 6;
+    height: 90vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__title {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 35px;
+    }
+
+    span {
+        display: flex;
+        width: 85%;
+        max-height: 30px;
+        margin: 10px 0;
+        justify-content: space-between;
+
+        label {
+            flex-basis: 30%;
+            font-size: 22px;
+        }
+
+        input {
+            border-radius: 5px;
+            flex-basis: 60%;
+            height: 30px;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+}
+
+.btn-form {
+    display: block;
+    min-width: 180px;
+    min-height: 40px;
+    background-color: $green;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-size: 22px;
+    color: #fff;
+    position: absolute;
+    z-index: 6;
+    padding: 10px 20px;
+
+    &:hover {
+        background-color: $blue;
+        border: 1px solid $blue;
+        transition: 0.2s linear all;
+    }
+}
+
+.btn-send {
+    left: 23.5vw;
+    bottom: 50px;
+}
+
+.btn-open {
+    margin-top: 10px;
+    left: 16.2vw;
+    min-height: 50px;
+    width: 180px;
+    padding-right: 70px;
+    position: relative;
+}
+
+.send-icon {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    top: 10px;
+    right: 1.3vw;
+}
+
+.form-card {
+    flex-basis: 35%;
+    z-index: 6;
+}
+
+.modal-close {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 6;
+}
+
+.js-hide {
+    opacity: 0;
+    z-index: 0;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    height: 130px;
+    margin-top: 30px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: .5rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+    &__image {
+        position: relative;
+        margin: 10px;
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    &__remove {
+        display: flex;
+        justify-content: center;
+        color: #fff;
+        background: #000;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        opacity: 0;
+        cursor: pointer;
+        transition: 0.2s linear all;
+    }
+}
+
+.gallery__image:hover .gallery__remove {
+    opacity: 1;
+}
+
+.send-modal {
+    z-index: 10;
+    justify-content: center;
+}
+
+.send-window {
+    max-height: 200px;
+    height: 100%;
+    max-width: 600px;
+    width: 100%;
+    padding: 10px;
+
+    &__text {
+        text-align: center;
+        display: block;
+        width: 75%;
+        margin-bottom: 40px;
+    }
+
+    &__svg {
+        border: 1px solid #fff;
+        border-radius: 5px;
+        padding: 5px;
+        width: 150px;
+        height: 45px;
+
+        &:hover {
+            background-color: $blue;
+            border: 1px solid $blue;
+            transition: 0.2s linear all;
+        }
     }
 }

@@ -2,21 +2,36 @@ import '../style/style.scss'
 
 import InitMap from './map/init-map'
 import InitFlats from './map/fetch'
-import Cards from './dynamic-info/add-info'
 import Content from './map/popupCard'
 import RightBlock from './dynamic-info/right-block'
 import Filters from './dynamic-info/filter'
+import Upload from './form/upload'
 
 document.addEventListener('DOMContentLoaded', async () => {
     const map = new InitMap()
     const flats = new InitFlats()
     const rightBlock = new RightBlock()
+    const upload = new Upload()
+
+    const btn = document.querySelector('.btn-render'),
+        formOpen = document.querySelector('.app')
     
     await flats.fetchFlats()
     map.initMarkers(flats.flats)
     
     rightBlock.initSelectsOptions(flats.flats)
     rightBlock.windowScroll(flats.flats)
+
+    btn.addEventListener('click', async () => { 
+        const block = document.querySelector('.cards'),
+            zeroStreet = document.querySelector('.streetlist__search'),
+            zeroRooms = document.querySelector('.open__zero')
+        map.updateLayers()
+        zeroStreet.value = ''
+        zeroRooms.innerHTML = zeroRooms.dataset.first
+        map.initMarkers(flats.flats)
+        block.classList.remove('active')
+    })
     
     document.querySelector('.wrapper').addEventListener('click', (e) => {
         const content = new Content()
@@ -48,4 +63,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             zeroRooms.innerHTML = zeroRooms.dataset.first
         }
     })
+
+    formOpen.addEventListener('click', e => upload.openForm(e))
 })
