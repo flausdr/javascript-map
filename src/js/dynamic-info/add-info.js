@@ -124,4 +124,15 @@ export default class AddInfo {
             this.conditionsForSelects(e, list, li, first)
         })
     }
+
+    rollbackToTheStandard() {  // new function for reset filters
+        const zeroStreet = document.querySelector('.streetlist__search'),
+            zeroRooms = document.querySelector('.open__zero')
+        zeroStreet.value = ''
+        zeroRooms.innerHTML = zeroRooms.dataset.first
+    }
+
+    initCards(json) {
+        json.forEach(item => this.infoForm.loaded(item))
+    }
 }

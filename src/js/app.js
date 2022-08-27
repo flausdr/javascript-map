@@ -14,13 +14,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     const upload = new Upload()
 
     const btn = document.querySelector('.btn-render'),
-        formOpen = document.querySelector('.app')
+        formOpen = document.querySelector('.app'),
+        search = document.querySelector('.street')
     
     await flats.fetchFlats()
     map.initMarkers(flats.flats)
     
     rightBlock.initSelectsOptions(flats.flats)
     rightBlock.windowScroll(flats.flats)
+
+    search.addEventListener('input', e => {
+        if (e.target.classList.contains('streetlist__search')) {
+            rightBlock.searchStreet(e)
+        }
+    })
 
     btn.addEventListener('click', async () => { 
         const block = document.querySelector('.cards'),

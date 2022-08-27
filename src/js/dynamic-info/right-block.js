@@ -1,7 +1,7 @@
 import AddInfo from './add-info'
 import Cards from './loadCards'
 
-export default class RigthBlock {
+export default class RightBlock {
 
     constructor() {
         this.info = new AddInfo()
@@ -31,6 +31,24 @@ export default class RigthBlock {
                     this.cards.loaded(jsonFlats[j])
                     j++
                 }
+            }
+        })
+    }
+
+    searchStreet(e) {
+        let word = e.target.value.trim()
+        let requestSearch = new RegExp (word, 'i')
+        const list = document.querySelectorAll('.streetlist__li')
+        console.log(word)
+        list.forEach(li => {
+            if (word.length < 2) {
+                li.classList.add('open')
+                return
+            }
+            if(li.innerHTML.search(requestSearch) !== -1) {
+                li.classList.add('open')
+            } else {
+                li.classList.remove('open')
             }
         })
     }
