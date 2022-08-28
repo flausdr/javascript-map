@@ -52,4 +52,16 @@ export default class RightBlock {
             }
         })
     }
+
+    rerenderRightBlock(json) {
+        this.info.clearCardsBlock()
+        this.info.refreshFilters(json)
+        this.initSelectsOptions(json)
+        this.windowScroll(json)
+    }
+
+    rerenderForPrice(json) {
+        this.info.clearCardsBlock()
+        json.forEach(item => this.cards.loaded(item))
+    }
 }

@@ -132,6 +132,26 @@ export default class AddInfo {
         zeroRooms.innerHTML = zeroRooms.dataset.first
     }
 
+    refreshingPrice(json) {
+        // const slider = document.querySelector('.price-slider__progress')
+        // slider.style.left = 0
+        this.range.style.left = 0
+        this.range.style.right = 0
+        // slider.style.right = 0
+        this.renderPriceValue(json)
+    }
+
+    refreshFilters(json) {
+        this.refreshingPrice(json)
+        this.rollbackToTheStandard()
+    }
+
+    clearCardsBlock() {
+        const block = document.querySelector('.cards')
+        block.innerHTML = ''
+        block.classList.add('active')
+    }
+
     initCards(json) {
         json.forEach(item => this.infoForm.loaded(item))
     }
