@@ -8,19 +8,6 @@ export default class RightBlock {
         this.cards = new Cards()
     }
 
-    initSelectsOptions(jsonFlats) {
-        this.info.createSelectStreet(jsonFlats)
-        this.info.openCloseModalStreet()
-        this.info.openCloseModalRooms()
-        this.info.renderPriceValue(jsonFlats)
-        this.info.inputValue()
-        this.info.inputRangeValue()
-
-        this.cards.loaded(jsonFlats[0])
-        this.cards.loaded(jsonFlats[1])
-        this.cards.loaded(jsonFlats[2])
-    }
-
     windowScroll(jsonFlats) {
         let j = 3
         const cards = document.querySelector('.cards')
@@ -39,7 +26,6 @@ export default class RightBlock {
         let word = e.target.value.trim()
         let requestSearch = new RegExp (word, 'i')
         const list = document.querySelectorAll('.streetlist__li')
-        console.log(word)
         list.forEach(li => {
             if (word.length < 2) {
                 li.classList.add('open')
@@ -53,11 +39,18 @@ export default class RightBlock {
         })
     }
 
+    initRightBlock(json) {
+        this.info.renderProps(json)
+        this.windowScroll(json)
+        this.cards.loaded(json[0])
+        this.cards.loaded(json[1])
+        this.cards.loaded(json[2])
+    }
+
     rerenderRightBlock(json) {
         this.info.clearCardsBlock()
         this.info.refreshFilters(json)
-        this.initSelectsOptions(json)
-        this.windowScroll(json)
+        this.rerenderForPrice(json)
     }
 
     rerenderForPrice(json) {

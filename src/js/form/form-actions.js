@@ -55,7 +55,6 @@ export default class LogicActions {
 
     clearInputs() {
         const inputs = document.querySelectorAll('.js-input')
-        console.log(inputs)
         inputs.forEach(input => input.value = '')
     }
 
@@ -71,14 +70,13 @@ export default class LogicActions {
                     newFlat.lng = res.results[0].geometry.lng
                 })
         } catch (error) {
-            console.log(error)
+            throw new Error(`Error is - ${error}`)
         }
     }
 
     async postFlat(newFlat) {
         const modal = document.querySelector('.modal')
         modal.classList.add('js-hide')
-        console.log(newFlat)
         try {
             const response = await fetch('http://site-constructor.stage/addflat.php', {
                 method: 'POST',
@@ -86,7 +84,7 @@ export default class LogicActions {
             })
             return response
         } catch(error) {
-            console.log(error)
+            throw new Error(`Error is - ${error}`)
         }
     }
 }

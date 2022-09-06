@@ -42,7 +42,6 @@ export default class Upload {
 
     changeHandler(e) {
         const gallery = document.querySelector('.gallery')
-        console.log(e.target.files)
         if (!e.target.files.length) {
             return
         }
@@ -71,14 +70,12 @@ export default class Upload {
         const inputs = document.querySelectorAll('.js-input')
         for (let i = 0; i < inputs.length; i++) {
             if (inputs[i].value.length === 0) {
-                console.log(inputs[i])
                 inputs[i].style.border = '1px solid red'
                 return
             }
         }
         this.newFlat['date'] = new Date().toLocaleDateString()
         await this.logic.fetchCoordinate(this.newFlat)
-        console.log(this.newFlat)
         await this.logic.postFlat(this.newFlat)
     }
 }

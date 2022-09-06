@@ -44,7 +44,6 @@ export default class AddInfo {
                     if (e.target.classList.contains('price-min')) {
                         this.rangeInput[0].value = this.minPrice
                         this.range.style.left = (((this.minPrice - fixedMin) / (this.rangeInput[0].max - fixedMin)) * 100) + '%'
-                        console.log(this.range.style.left)
                     } else {
                         this.rangeInput[1].value = this.maxPrice
                         this.range.style.right = 100 - ((this.maxPrice - fixedMin) / (this.rangeInput[1].max - fixedMin)) * 100 + '%'
@@ -72,7 +71,6 @@ export default class AddInfo {
                     this.range.style.left = (((this.minPrice - fixedMin) / (this.rangeInput[0].max - fixedMin)) * 100) + '%'
                     this.priceInput[1].value = this.maxPrice
                     this.range.style.right = 100 - ((this.maxPrice - fixedMin) / (this.rangeInput[1].max - fixedMin)) * 100 + '%'
-                    console.log(this.range.style.left)
                 }
             })
         })
@@ -86,7 +84,7 @@ export default class AddInfo {
         })
     }
 
-    conditionsForSelects(e, wrapper, list, zeroItem) {  // logic for open and close selects
+    conditionsForSelects(e, wrapper, list, zeroItem) { 
         list.forEach(li => {
             if (e.target === li) {
                 if (zeroItem.classList.contains('streetlist__search')) {
@@ -107,7 +105,7 @@ export default class AddInfo {
         }
     }
 
-    openCloseModalStreet() {  // method for open & close select street
+    openCloseModalStreet() { 
         const list = document.querySelector('.streetlist')
         const li = document.querySelectorAll('.streetlist__li')
         const search = document.querySelector('.streetlist__search')
@@ -116,7 +114,7 @@ export default class AddInfo {
         })
     }
 
-    openCloseModalRooms() {  // method for open & close select rooms
+    openCloseModalRooms() { 
         const list = document.querySelector('.rooms-filter-options')
         const li = document.querySelectorAll('.rooms-filter-options__value')
         const first = document.querySelector('.open__zero')
@@ -125,7 +123,7 @@ export default class AddInfo {
         })
     }
 
-    rollbackToTheStandard() {  // new function for reset filters
+    rollbackToTheStandard() {
         const zeroStreet = document.querySelector('.streetlist__search'),
             zeroRooms = document.querySelector('.open__zero')
         zeroStreet.value = ''
@@ -133,11 +131,8 @@ export default class AddInfo {
     }
 
     refreshingPrice(json) {
-        // const slider = document.querySelector('.price-slider__progress')
-        // slider.style.left = 0
         this.range.style.left = 0
         this.range.style.right = 0
-        // slider.style.right = 0
         this.renderPriceValue(json)
     }
 
@@ -154,5 +149,15 @@ export default class AddInfo {
 
     initCards(json) {
         json.forEach(item => this.infoForm.loaded(item))
+    }
+
+    renderProps(json) {
+        this.createSelectStreet(json)
+        this.openCloseModalStreet()
+        this.openCloseModalRooms()
+
+        this.renderPriceValue(json)
+        this.inputValue()
+        this.inputRangeValue()
     }
 }
