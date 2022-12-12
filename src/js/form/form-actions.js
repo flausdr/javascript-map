@@ -54,8 +54,11 @@ export default class LogicActions {
     }
 
     clearInputs() {
-        const inputs = document.querySelectorAll('.js-input')
+        const inputs = document.querySelectorAll('.js-input'),
+        gallery = document.querySelector('.gallery')
+        
         inputs.forEach(input => input.value = '')
+        gallery.innerHTML = ''
     }
 
     async fetchCoordinate(newFlat) {
