@@ -34,13 +34,6 @@ module.exports = {
                 }
             },
             {
-                test: /\.json$/,
-                type: 'asset/resource',
-                generator: {
-                    filename: './fonts/[name][ext]'
-                }
-            },
-            {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
