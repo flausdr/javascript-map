@@ -9,7 +9,7 @@ const isProd = !isDev;
 module.exports = {
     entry: './src/js/app.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'),
         filename: '[name].js',
     },
     mode: 'developer',
